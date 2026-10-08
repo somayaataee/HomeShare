@@ -1,10 +1,14 @@
-
+import { BrowserRouter } from 'react-router-dom'
+import Dashbord from './pages/Dashbord'
 function App() {
+
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
-  );
+    <>
+    <BrowserRouter>
+        <Dashbord/>
+    </BrowserRouter>
+    </>
+  )
 }
 
-export default App;
+export default App
