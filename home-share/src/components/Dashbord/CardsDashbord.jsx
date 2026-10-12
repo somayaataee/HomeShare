@@ -11,7 +11,7 @@ export default function CardsDashbord(){
         <>
         <div className=" text-white grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {infoDashbordCards.map((cardItem)=>(
-            <div className="rounded-2xl border border-white/20 p-3 bg-blue-500/20">
+            <div className="animateTop rounded-2xl border border-white/20 p-3 bg-blue-500/20">
                 <div className={`flex justify-center items-center rounded-2xl h-15 w-15 ${cardItem.iconBg}`}>{cardItem.icon}</div>
                 <h3 className="pt-5 text-xl" >{cardItem.title} </h3>
                 <p className="font-bold py-2">{cardItem.price}</p>

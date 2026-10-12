@@ -15,7 +15,7 @@ export default function Sidbar(){
     return(
         <>
         {/* sidbar */}
-        <div className="min-h-160 w-65 mx-3 my-2 p-4 rounded-2xl text-[18px] bg-blue-950 text-white">
+        <div className="min-h-160 fixed w-65 mx-3 my-2 p-4 rounded-2xl text-[18px] bg-blue-950 text-white">
          <h1 className="text-2xl pb-5">🏠 HomeShare</h1>
          <div>
             <ul>

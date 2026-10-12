@@ -2,3 +2,12 @@
 body{
   background-color: rgb(16, 18, 44);
 }
+@layer components{
+  .animateTop{
+    @apply hover:transition-all hover:-translate-y-5 hover:duration-700
+
+  }
+  .animateShadow{
+    @apply shadow-2xl hover:shadow-pink-300/30 hover:shadow-lg  hover:duration-300
+  }
+}
