@@ -14,7 +14,7 @@ export default function DebitStatus(){
     
     return(
         <>
-        <div className="animateShadow w-[90%] border rounded-2xl mt-15 border-white/15 bg-blue-950/40 p-7 ">            
+        <div className="animateShadow w-[90%] border rounded-2xl mt-10 border-white/15 bg-blue-950/40 p-7 ">            
             <h1 className="py-5 font-bold">Debt/Credit Status</h1>
             {RecentShowData.map((showData)=>(
             <div>

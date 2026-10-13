@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 body{
   background-color: rgb(16, 18, 44);
+  color: white;
 }
 @layer components{
   .animateTop{
@@ -9,5 +10,8 @@ body{
   }
   .animateShadow{
     @apply shadow-2xl hover:shadow-pink-300/30 hover:shadow-lg  hover:duration-300
+  }
+  .td-Style{
+    @apply px-4 py-3 text-white text-left
   }
 }
