@@ -3,23 +3,29 @@ import Sidbar from "../components/Layout/Sidbar";
 import AddExpenses from "../components/Expenses/AddExpenses";
 
 export default function Expenses() {
-
+  //states
   const[isModalOpen,setisModalOpen]=useState(false);
-
+  //add expenses button
  function handleAddExpenses(){
     setisModalOpen(true);
+  }
 
+  //save expenses 
+  function handleSaveExpenses(newExpenses){
+    setExpenses([newExpenses,...expenses]);
+    
   }
 
 
 
-  const expenses =[
+  const[expenses,setExpenses]=useState([
     {id:1,date:'123/33',description:'Electrecity',amount:'$60',paidBy:'Somaya',action:'🗑️'},
     {id:2,date:'12/03',description:'Groceries',amount:'$120',paidBy:'Hasib',action:'🗑️'},
     {id:3,date:'23/23',description:'Internet',amount:'$80',paidBy:'Ahmad',action:'🗑️'},
     {id:4,date:'2/23',description:'Water',amount:'$100',paidBy:'Ali',action:'🗑️'},
-    {id:5,date:'32/56',description:'Cleaning',amount:'$30',paidBy:'Hania',action:'🗑️'},
-  ];
+    {id:5,date:'32/56',description:'Cleaning',amount:'$30',paidBy:'Hania',action:'🗑️'},])
+    
+
   const Head =['Date','Description','Amount','PaidBy','Action'];
 
 
@@ -42,7 +48,7 @@ export default function Expenses() {
                <button onClick={handleAddExpenses} className="bg-blue-700 px-2 rounded h-10 shrink-0">
                 ➕ Add Expenses</button>
             </header>
-                            {isModalOpen && <AddExpenses/>}
+                            {isModalOpen && <AddExpenses onClose={setisModalOpen} onSave={handleSaveExpenses}/>}
 
               {/* ------ table of expenses------ */}
             <section className="border-white/30 border rounded-2xl overflow-hidden">
@@ -61,7 +67,7 @@ export default function Expenses() {
                         <td className=" td-Style">{expenItem.description}</td>
                         <td className="td-Style">{expenItem.amount}</td>
                         <td className="td-Style">{expenItem.paidBy}</td>
-                        <td className="bg-red-500/60 rounded-2xl px-5 py-2 my-2">{expenItem.action}</td>
+                        <button className="bg-red-500/60 rounded-2xl px-5 py-2 my-2">{expenItem.action}</button>
                       </tr>
                   ))}
                   
@@ -70,7 +76,6 @@ export default function Expenses() {
             </section>
         </main>
     </div>
-    {/* <AddExpenses/> */}
     </>
   );
 }
