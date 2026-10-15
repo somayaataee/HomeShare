@@ -1,3 +1,11 @@
+
+
+    // {id:1,date:'123/33',description:'Electrecity',amount:'$60',paidBy:'Somaya',action:'🗑️'},
+    // {id:2,date:'12/03',description:'Groceries',amount:'$120',paidBy:'Hasib',action:'🗑️'},
+    // {id:3,date:'23/23',description:'Internet',amount:'$80',paidBy:'Ahmad',action:'🗑️'},
+    // {id:4,date:'2/23',description:'Water',amount:'$100',paidBy:'Ali',action:'🗑️'},
+    // {id:5,date:'32/56',description:'Cleaning',amount:'$30',paidBy:'Hania',action:'🗑️'},
+
 import { useState } from "react";
 import Sidbar from "../components/Layout/Sidbar";
 import AddExpenses from "../components/Expenses/AddExpenses";
@@ -5,6 +13,9 @@ import AddExpenses from "../components/Expenses/AddExpenses";
 export default function Expenses() {
   //states
   const[isModalOpen,setisModalOpen]=useState(false);
+  const[expenses,setExpenses]=useState([]);
+
+
   //add expenses button
  function handleAddExpenses(){
     setisModalOpen(true);
@@ -15,15 +26,11 @@ export default function Expenses() {
     setExpenses([newExpenses,...expenses]);
     
   }
-
-
-
-  const[expenses,setExpenses]=useState([
-    {id:1,date:'123/33',description:'Electrecity',amount:'$60',paidBy:'Somaya',action:'🗑️'},
-    {id:2,date:'12/03',description:'Groceries',amount:'$120',paidBy:'Hasib',action:'🗑️'},
-    {id:3,date:'23/23',description:'Internet',amount:'$80',paidBy:'Ahmad',action:'🗑️'},
-    {id:4,date:'2/23',description:'Water',amount:'$100',paidBy:'Ali',action:'🗑️'},
-    {id:5,date:'32/56',description:'Cleaning',amount:'$30',paidBy:'Hania',action:'🗑️'},])
+  //delete expenses
+  function handleDeleteExpenses(id){
+    
+    setExpenses(expenses.filter((expen)=>expen.id !== id))
+  }
     
 
   const Head =['Date','Description','Amount','PaidBy','Action'];
@@ -52,7 +59,19 @@ export default function Expenses() {
 
               {/* ------ table of expenses------ */}
             <section className="border-white/30 border rounded-2xl overflow-hidden">
-              <table className=" rounded-2xl w-full bg-blue-900/40 ">
+            {expenses.length === 0 ?(
+                      <div
+                      style={{ background: "var(--card)" }}
+                      className="rounded-2xl p-10 text-center"
+                    >
+                    <div className="mb-3 text-4xl">📝</div>
+                    <h3 className="font-bold">No Expenses yet</h3>
+                    <p className="mt-2 text-sm opacity-50">
+                      Add your first expenses and start being productive.
+                    </p>
+                 </div>
+                ):(
+                  <table className=" rounded-2xl w-full bg-blue-900/40 ">
                 <thead className="bg-gray-500">
                   <tr  className="">
                   {Head.map((topHead)=>(
@@ -67,12 +86,14 @@ export default function Expenses() {
                         <td className=" td-Style">{expenItem.description}</td>
                         <td className="td-Style">{expenItem.amount}</td>
                         <td className="td-Style">{expenItem.paidBy}</td>
-                        <button className="bg-red-500/60 rounded-2xl px-5 py-2 my-2">{expenItem.action}</button>
+                        <td>
+                        <button onClick={()=>handleDeleteExpenses(expenItem.id)} className="bg-red-500/60 rounded-2xl px-5 py-2 my-2">{expenItem.action}</button>
+                        </td>
                       </tr>
                   ))}
-                  
                 </tbody>
               </table>
+                )}
             </section>
         </main>
     </div>
